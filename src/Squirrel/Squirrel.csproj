@@ -53,7 +53,6 @@
     </Reference>
     <Reference Include="SharpCompress, Version=0.12.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SharpCompress.0.12.3\lib\net45\SharpCompress.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
