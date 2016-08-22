@@ -196,6 +196,11 @@ namespace Squirrel
                     }
 
                     decoded = re.Replace(decoded, "");
+                    if (String.IsNullOrWhiteSpace(decoded)) {
+                        // NB: We'll have an entry for `lib/net45` which we have paved
+                        // with our regex
+                        continue;
+                    }
 
                     var fullTargetDir = Path.Combine(outFolder, Path.GetDirectoryName(decoded));
                     if (!reader.Entry.IsDirectory) {
