@@ -10,7 +10,7 @@ Squirrel packaging can be easily integrated directly into your build process usi
 The first step is to define a build target in your `.csproj` file.
 
 ```xml
-<Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">  <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">    <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo"/>  </GetAssemblyIdentity>  <Exec Command="nuget pack MyApp.nuspec -Version %(myAssemblyInfo.Version) -Properties Configuration=Release -OutputDirectory $(OutDir) -BasePath $(OutDir)" />  <Exec Command="squirrel --releasify $(OutDir)MyApp.%(myAssemblyInfo.Version).nupkg" /></Target>
+<Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">  <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">    <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo"/>  </GetAssemblyIdentity>  <Exec Command="nuget pack MyApp.nuspec -Version $([System.Version]::Parse(%(myAssemblyInfo.Version)).ToString(3)) -Properties Configuration=Release -OutputDirectory $(OutDir) -BasePath $(OutDir)" />  <Exec Command="squirrel --releasify $(OutDir)MyApp.$([System.Version]::Parse(%(myAssemblyInfo.Version)).ToString(3)).nupkg" /></Target>
 ```
 
 This will generate a NuGet package from .nuspec file setting version from AssemblyInfo.cs and place it in OutDir (by default bin\Release). Then it will generate release files from it.
