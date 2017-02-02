@@ -20,7 +20,8 @@ This will generate a NuGet package from .nuspec file setting version from Assemb
 Here is an example `MyApp.nuspec` file for the above build target example.
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?><package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">  <metadata>    <id>MyApp</id>    <!-- version will be replaced by MSBuild -->    <version>0.0.0.0</version>    <title>title</title>    <authors>authors</authors>    <description>description</description>    <requireLicenseAcceptance>false</requireLicenseAcceptance>    <copyright>Copyright 2016</copyright>    <dependencies />  </metadata>  <files>    <file src="*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>  </files></package>
+<?xml version="1.0" encoding="utf-8"?><package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">  <metadata>    <id>MyApp</id>    <!-- version will be replaced by MSBuild -->    <version>0.0.0.0</version>    <title>title</title>    <authors>authors</authors>    <description>description</description>    <requireLicenseAcceptance>false</requireLicenseAcceptance>    <copyright>Copyright 2016</copyright>    <dependencies />  </metadata>  <files>    <file src="*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>
+    <file src="**\*.*" target="lib\net45\" exclude="*.pdb;*.nupkg;*.vshost.*"/>  </files></package>
 ```
 
 ## Additional Notes
